@@ -1,0 +1,64 @@
+Language model created by QuickLM on Mon Jul 30 05:56:13 EDT 2018
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 4 sentences and 13 words
+
+\data\
+ngram 1=13
+ngram 2=15
+ngram 3=13
+
+\1-grams:
+-1.0212 </s> -0.3010
+-1.0212 <s> -0.2576
+-1.6232 is -0.2906
+-1.6232 it -0.2906
+-1.3222 led -0.2576
+-1.6232 music -0.2576
+-1.6232 now -0.2576
+-1.6232 off -0.2798
+-1.6232 on -0.2798
+-1.6232 play -0.2906
+-1.6232 time -0.2906
+-1.3222 turn -0.2798
+-1.6232 what -0.2906
+
+\2-grams:
+-0.9031 <s> play 0.0000
+-0.6021 <s> turn 0.0000
+-0.9031 <s> what 0.0000
+-0.3010 is it 0.0000
+-0.3010 it now 0.0000
+-0.3010 led </s> -0.3010
+-0.3010 music </s> -0.3010
+-0.3010 now </s> -0.3010
+-0.3010 off led 0.0000
+-0.3010 on led 0.0000
+-0.3010 play music 0.0000
+-0.3010 time is 0.0000
+-0.6021 turn off 0.0000
+-0.6021 turn on 0.0000
+-0.3010 what time 0.0000
+
+\3-grams:
+-0.3010 <s> play music
+-0.6021 <s> turn off
+-0.6021 <s> turn on
+-0.3010 <s> what time
+-0.3010 is it now
+-0.3010 it now </s>
+-0.3010 off led </s>
+-0.3010 on led </s>
+-0.3010 play music </s>
+-0.3010 time is it
+-0.3010 turn off led
+-0.3010 turn on led
+-0.3010 what time is
+
+\end\

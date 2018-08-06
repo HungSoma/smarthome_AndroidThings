@@ -1,0 +1,228 @@
+{
+  "project_info": {
+    "project_number": "291221530079",
+    "firebase_url": "https://smarthome-9b626.firebaseio.com",
+    "project_id": "smarthome-9b626",
+    "storage_bucket": "smarthome-9b626.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291221530079:android:f37f5f7ff08d2db1",
+        "android_client_info": {
+          "package_name": "com.example.minhnguyen.guidulieu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291221530079-qtgsq6hfe4nit76mkf46db1k2hvi7s45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE_EdR-KswumZPWuFgONIrzbSwkJQtYT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291221530079:android:815b60e46642009e",
+        "android_client_info": {
+          "package_name": "com.example.minhnguyen.nhathongminh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291221530079-qtgsq6hfe4nit76mkf46db1k2hvi7s45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE_EdR-KswumZPWuFgONIrzbSwkJQtYT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291221530079:android:beeba61414342385",
+        "android_client_info": {
+          "package_name": "com.example.minhnguyen.smarthome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291221530079-qtgsq6hfe4nit76mkf46db1k2hvi7s45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE_EdR-KswumZPWuFgONIrzbSwkJQtYT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291221530079:android:665f86a2fa509121",
+        "android_client_info": {
+          "package_name": "com.example.minhnguyen.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291221530079-qtgsq6hfe4nit76mkf46db1k2hvi7s45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE_EdR-KswumZPWuFgONIrzbSwkJQtYT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291221530079:android:226f5f243c38d729",
+        "android_client_info": {
+          "package_name": "com.example.ritodoji.ledcontrolmqtt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291221530079-qtgsq6hfe4nit76mkf46db1k2hvi7s45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE_EdR-KswumZPWuFgONIrzbSwkJQtYT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291221530079:android:b83512505f20750f",
+        "android_client_info": {
+          "package_name": "com.example.ritodoji.voiceregconition_pocketsphinx_ver1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291221530079-qtgsq6hfe4nit76mkf46db1k2hvi7s45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE_EdR-KswumZPWuFgONIrzbSwkJQtYT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291221530079:android:d842af33038fad5c",
+        "android_client_info": {
+          "package_name": "info.androidhive.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291221530079-qtgsq6hfe4nit76mkf46db1k2hvi7s45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE_EdR-KswumZPWuFgONIrzbSwkJQtYT0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

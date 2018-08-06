@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VoiceControlActivity"
+    android:background="@color/backgroundMenu">
+
+    <Button
+        android:id="@+id/buttonled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="289dp"
+        android:text="Led"
+        android:background="@color/colortexthint"/>
+
+    <Button
+        android:id="@+id/buttonTemp"
+        android:background="@color/colortexthint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/buttonled"
+        android:layout_marginEnd="51dp"
+        android:text="Temp" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="60dp"
+        android:background="@color/colortexthint"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="25dp"
+        android:text="Logout" />
+</RelativeLayout>
