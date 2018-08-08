@@ -2,9 +2,13 @@ package com.example.ritodoji.voiceregconition_pocketsphinx_ver1;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+
+import com.example.ritodoji.voiceregconition_pocketsphinx_ver1.LoginFireBase.Store;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -14,20 +18,31 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-public class MqttCommand implements MqttCallback{
-    private static final String username = "omnsnfxm";
-    private static final String password = "2g50mT2Xl3Cx";
-    private static final String serveruri = "tcp://m14.cloudmqtt.com:13457";
-    private static final String clientId = "voiceapp";
+
+public class MqttCommand implements MqttCallback {
+    private static String username = "omnsnfxm";
+    private static String password = "2g50mT2Xl3Cx";
+    private static String serveruri = "tcp://m14.cloudmqtt.com:13457";
+    private static String clientId = "voiceapp";
     private static final String TAG = MqttCommand.class.getSimpleName();
     private static final  int QOs = 1;
     public MqttClient client ;
     private MqttControl mqttControl;
-
     public interface MqttControl{
         void getMessage(String payload);
     }
+    public void getdataFromDB(){
+        serveruri = "tcp://"+Store.uri +":"+Store.port;
+        username = Store.usernameMqtt;
+        password = Store.passwordMqtt;
+        clientId = Store.clientId;
+        Log.d("DATA","serveruri: " + serveruri);
+        Log.d("DATA","username: " + username);
+        Log.d("DATA","password: " + password);
+        Log.d("DATA","clientID: " + clientId);
+    }
     public  MqttCommand(Context context, MqttControl mqttControl) throws MqttException {
+        getdataFromDB();
         this.mqttControl = mqttControl;
         subcribeToTopic(context);
     }

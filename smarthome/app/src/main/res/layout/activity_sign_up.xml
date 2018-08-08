@@ -5,53 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginFireBase.SignUpActivity"
-    android:background="@color/colortexthint">
+    android:background="@color/backgroundPrimary">
 
-    <EditText
-        android:id="@+id/editEmail"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="77dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="21dp"
+        app:srcCompat="@drawable/logo" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="57dp"
-        android:layout_marginTop="99dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="171dp" />
-
-    <EditText
-        android:id="@+id/editUri"
+        android:text="Shome"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_toEndOf="@id/imageView"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="5dp"
+        />
+    <RelativeLayout
+        android:id="@+id/relayx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/editEmail"
-        android:layout_marginTop="228dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="248dp" />
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
 
-    <EditText
-        android:id="@+id/editPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/editEmail"
-        android:layout_marginTop="165dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="323dp" />
-
+        >
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editEmail"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="59dp"
-        android:text="Email" />
+        android:layout_marginStart="40dp"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="12sp"/>
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/textView"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+         />
 
     <TextView
         android:id="@+id/textView3"
@@ -59,7 +64,22 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editPassword"
         android:layout_alignStart="@+id/textView"
-        android:text="Password" />
+        android:text="Password"
+        android:textColor="@color/white"
+        android:textSize="12sp"/>
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editEmail"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="323dp" />
+
 
     <TextView
         android:id="@+id/textView4"
@@ -67,7 +87,65 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editUri"
         android:layout_alignStart="@+id/textView"
-        android:text="Uri Sever" />
+        android:text="Uri Sever"
+        android:textColor="@color/white"
+        android:textSize="12sp"/>
+    <EditText
+        android:id="@+id/editUri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editEmail"
+        android:layout_marginTop="103dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editUserMqtt"
+        android:layout_alignStart="@+id/textView"
+        android:text="User MQTT"
+        android:textSize="12sp"
+        android:textColor="@color/white"/>
+    <EditText
+        android:id="@+id/editUserMqtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editEmail"
+        android:layout_marginTop="148dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+         />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_alignBaseline="@+id/editPassMqtt"
+            android:layout_alignStart="@+id/textView"
+            android:text="Pass MQTT" />
+        <EditText
+            android:id="@+id/editPassMqtt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/editEmail"
+            android:layout_marginTop="188dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editPort"
+        android:layout_alignStart="@+id/textView"
+        android:text="Port"
+        android:textSize="12sp"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/editPort"
@@ -75,11 +153,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/editEmail"
-        android:layout_marginTop="294dp"
+        android:layout_marginTop="230dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="" />
 
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editPort"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="95dp"
+        android:text="Client ID"
+        android:textSize="12sp"
+        android:textColor="@color/white"/>
     <EditText
         android:id="@+id/editClientID"
         android:layout_width="61dp"
@@ -90,89 +180,33 @@
         android:inputType="textPersonName"
         android:text="" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editPort"
-        android:layout_alignStart="@+id/textView"
-        android:text="Port" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editPort"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="130dp"
-        android:text="Client ID" />
 
-    <EditText
-        android:id="@+id/editUserMqtt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/editEmail"
-        android:layout_marginBottom="249dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/editPassMqtt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/editEmail"
-        android:layout_marginBottom="186dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editUserMqtt"
-        android:layout_alignStart="@+id/textView"
-        android:text="User MQTT" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editPassMqtt"
-        android:layout_alignStart="@+id/textView"
-        android:text="Pass MQTT" />
-
+    </RelativeLayout>
     <Button
         android:id="@+id/buttonSignup"
-        android:layout_width="224dp"
+        android:layout_width="184dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/relayx"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="92dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/white"
         android:text="Sign Up"
-        android:background="@drawable/et2"/>
+        android:background="@drawable/et3"/>
+
 
     <Button
         android:id="@+id/buttonSignin"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/editClientID"
-        android:layout_marginBottom="19dp"
-        android:background="@color/colortexthint"
+        android:layout_below="@+id/buttonSignup"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="29dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/transparent"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
         android:text="Sign in?" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="77dp"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        app:srcCompat="@drawable/homeico" />
 
     <ProgressBar
         android:id="@+id/progressBar_Signup"

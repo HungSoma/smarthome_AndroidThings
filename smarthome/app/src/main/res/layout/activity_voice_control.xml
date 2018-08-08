@@ -5,37 +5,112 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VoiceControlActivity"
-    android:background="@color/backgroundMenu">
+    android:background="@color/backgroundPrimary">
 
-    <Button
-        android:id="@+id/buttonled"
+    <TextView
+        android:id="@+id/textwelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="289dp"
-        android:text="Led"
-        android:background="@color/colortexthint"/>
-
-    <Button
-        android:id="@+id/buttonTemp"
-        android:background="@color/colortexthint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/buttonled"
-        android:layout_marginEnd="51dp"
-        android:text="Temp" />
-
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="60dp"
-        android:background="@color/colortexthint"
-        android:layout_height="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="18dp"
+        android:text=" Hùng"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
         android:layout_marginTop="25dp"
-        android:text="Logout" />
+        android:drawableRight="@drawable/ic_arrow_drop_down_white"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/textwelcome"
+
+        >
+    <ImageView
+        android:id="@+id/logoMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shome"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:layout_alignLeft="@+id/logoMenu"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="80dp"/>
+        <RelativeLayout
+            android:layout_below="@+id/logoMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="90dp"
+            >
+            <Button
+                android:id="@+id/buttonled"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:text="@string/light"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/white"
+                android:background="@drawable/et3"
+                android:drawableStart="@drawable/ico_light_off"
+                android:paddingStart="20dp"
+               />
+
+            <Button
+                android:id="@+id/buttonTemp"
+                android:layout_alignStart="@+id/buttonled"
+                android:paddingStart="20dp"
+                android:layout_marginStart="170dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@drawable/et3"
+                android:drawableStart="@drawable/ico_temp"
+                android:fontFamily="sans-serif"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:text="@string/temp" />
+            <Button
+                android:id="@+id/buttonMusic"
+                android:paddingRight="15dp"
+                android:layout_below="@+id/buttonled"
+                android:layout_alignParentLeft="true"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_music"
+                android:textColor="@color/white"
+                android:background="@drawable/et3"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:text="@string/music" />
+            <Button
+                android:id="@+id/buttonGas"
+                android:drawableLeft="@drawable/ic_gas"
+                android:layout_below="@+id/buttonTemp"
+                android:textSize="20sp"
+                android:paddingRight="15dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="170dp"
+                android:textColor="@color/white"
+                android:background="@drawable/et3"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:text="Gas" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+
 </RelativeLayout>

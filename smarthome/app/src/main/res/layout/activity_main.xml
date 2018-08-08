@@ -4,107 +4,109 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundPrimary"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="40dp"
-        android:hint="You will see in put here"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-    <EditText
-        android:id="@+id/editstatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="169dp"
-        android:hint="status regconition !"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="@color/colortext" />
 
     <TextView
-        android:id="@+id/textmessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="138dp"
-        android:hint="yur message" />
-
-
-    <ImageView
-        android:id="@+id/imageLed1"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="75dp"
-        android:layout_toStartOf="@+id/editstatus"
-        android:src="@drawable/iconled1"
-        tools:layout_editor_absoluteX="189dp"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <ImageView
-        android:id="@+id/imageLed2"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="167dp"
-        android:layout_toStartOf="@+id/editstatus"
-        android:src="@drawable/iconled1"
-        tools:layout_editor_absoluteX="189dp"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <ImageView
-        android:id="@+id/imageLed3"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="259dp"
-        android:layout_toStartOf="@+id/editstatus"
-        android:src="@drawable/iconled1"
-        tools:layout_editor_absoluteX="189dp"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <ImageButton
-        android:id="@+id/buttonMic"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_above="@+id/editstatus"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_background" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="93dp"
-        android:text="Switch"
-        android:textOn="ON"
-        android:textOff="OFF"/>
-
-    <Switch
-        android:id="@+id/switch2"
-        android:layout_width="wrap_content"
+        android:id="@+id/textVoice"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/switch1"
-        android:layout_marginTop="182dp"
-        android:text="Switch" />
-
-    <Switch
-        android:id="@+id/switch3"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="70dp"
+        android:hint="Your voice"
+        android:textColorHint="@color/white"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/switch1"
-        android:layout_marginTop="275dp"
-        android:text="Switch" />
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/et4">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="60dp"
+            >
+            <ImageView
+                android:id="@+id/imageLed1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ico_light_off"
+                tools:layout_editor_absoluteX="189dp"
+                tools:layout_editor_absoluteY="132dp" />
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imageLed1"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="40dp"
+                android:text="on/off"
+                android:textColor="@color/white"
+                android:textOn="ON"
+                android:textOff="OFF"/>
+            <ImageView
+                android:id="@+id/imageLed2"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="92dp"
+                android:src="@drawable/ico_light_off"
+                tools:layout_editor_absoluteX="189dp"
+                tools:layout_editor_absoluteY="132dp" />
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/switch1"
+                android:layout_marginTop="130dp"
+                android:text="on/off"
+                android:textColor="@color/white"/>
+            <ImageView
+                android:id="@+id/imageLed3"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="184dp"
+                android:src="@drawable/ico_light_off"
+                tools:layout_editor_absoluteX="189dp"
+                tools:layout_editor_absoluteY="132dp" />
+
+
+            <Switch
+                android:id="@+id/switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/switch1"
+                android:layout_marginTop="223dp"
+                android:textColor="@color/white"
+                android:text="on/off"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/buttonMic"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_background" />
+
+    </RelativeLayout>
 </RelativeLayout>

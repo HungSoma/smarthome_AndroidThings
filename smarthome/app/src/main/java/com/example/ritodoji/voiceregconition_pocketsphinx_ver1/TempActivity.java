@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -21,23 +20,28 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class TempActivity extends Activity implements MqttCommand.MqttControl {
     private static final String topicTemp = "smarthome/temp/value";
     private MqttCommand mqttCommand;
-    private TextView textView;
+    private TextView textView, textTime;
     private LineChart mChart;
+    private static String timeDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_temp);
-        textView = findViewById(R.id.textTemp);
-        mChart = findViewById(R.id.linechart);
+        init();
         try {
             mqttCommand = new MqttCommand(this, this);
             mqttCommand.client.subscribe(topicTemp);
-            mqttCommand.client.unsubscribe("smarthome/led/state");
+           // mqttCommand.client.unsubscribe("smarthome/led/state");
             Log.d("SUB","SubCribed Temp");
         } catch (MqttException e) {
             e.printStackTrace();
@@ -47,7 +51,13 @@ public class TempActivity extends Activity implements MqttCommand.MqttControl {
         setupData();
         setLegend();
     }
-
+    private void init(){
+        textView = findViewById(R.id.textTemp);
+        textTime = findViewById(R.id.textDaytime);
+        mChart = findViewById(R.id.linechart);
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss a", Locale.US);
+        timeDay = dateFormat.format(new Date());
+    }
     private void setupChart() {
         // disable description text
         mChart.getDescription().setEnabled(false);
@@ -153,6 +163,7 @@ public class TempActivity extends Activity implements MqttCommand.MqttControl {
     public void getMessage(String payload) {
         Log.d("mess","You got a value : " + payload);
         setText(textView,payload);
+        setText(textTime,timeDay);
         float pay = Float.valueOf(payload);
         addEntry(pay);
     }
@@ -171,17 +182,10 @@ public class TempActivity extends Activity implements MqttCommand.MqttControl {
         super.onDestroy();
         try {
             mqttCommand.close();
+            mqttCommand.client.unsubscribe(topicTemp);
         } catch (MqttException e) {
             e.printStackTrace();
         }
     }
-    @Override
-    protected  void onStop(){
-        super.onStop();
-        try {
-            mqttCommand.close();
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

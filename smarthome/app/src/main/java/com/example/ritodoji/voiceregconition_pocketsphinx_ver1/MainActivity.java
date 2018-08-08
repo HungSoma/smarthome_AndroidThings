@@ -2,11 +2,10 @@ package com.example.ritodoji.voiceregconition_pocketsphinx_ver1;
 
 import android.app.Activity;
 
-import android.os.Bundle;;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -36,26 +35,24 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
     private PocketSphinx pocketsphinx;
     private MqttCommand mqttCommand;
     private Stata state;
-    private EditText editinput, editstatus;
     private TextView textView;
     ImageView imgled1,imgled2;
     Switch switchLight1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Icepick.restoreInstanceState(this, savedInstanceState);
         setContentView(R.layout.activity_main);
         intit_view();
-        ontouchMic();
         tts = new TtsSpeaker(MainActivity.this, MainActivity.this);
         try {
             mqttCommand = new MqttCommand(this, this);
             mqttCommand.client.subscribe(toPic);
-            mqttCommand.client.unsubscribe("smarthome/temp/value");
+           // mqttCommand.client.unsubscribe("smarthome/temp/value");
             Log.d("SUB","Subcribed Led");
         } catch (MqttException e) {
             e.printStackTrace();
         }
+        ontouchMic();
     }
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
@@ -63,9 +60,7 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
         Icepick.saveInstanceState(this, savedInstanceState);
     }
     private void intit_view(){
-        editinput = findViewById(R.id.editext);
-        editstatus = findViewById(R.id.editstatus);
-        textView = findViewById(R.id.textmessage);
+        textView = findViewById(R.id.textVoice);
         imgled1 = findViewById(R.id.imageLed1);
         imgled2 = findViewById(R.id.imageLed2);
         switchLight1 = findViewById(R.id.switch1);
@@ -83,8 +78,7 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
                     case MotionEvent.ACTION_DOWN:
                         state = Stata.INITALIZING;
                         tts.say("I'm ready!");
-                        editstatus.setText("Ready!");
-                        editinput.setHint("Listening.....");
+                        textView.setHint("Listening.....");
                         break;
                 }
                 return false;
@@ -93,21 +87,13 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
     }
 
     @Override
-    protected  void onStop(){
-        super.onStop();
-        try {
-            mqttCommand.close();
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
-    }
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         tts.onDestroy();
         pocketsphinx.onStop();
         try {
             mqttCommand.close();
+            mqttCommand.client.unsubscribe(toPic);
         } catch (MqttException e) {
             e.printStackTrace();
         }
@@ -147,7 +133,6 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
     @Override
     public void onActivationPhraseDetected() {
         state = Stata.CONFIRMING_KEYPHRASE;
-        editstatus.setText("Right key");
         tts.say("Yup?");
 
 
@@ -156,39 +141,39 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
     @Override
     public void onTextRecognized(String recognizedText) {
         state = Stata.CONFIRMING_ACTION;
-        editstatus.setText("Action doing");
         String answer;
         String input = recognizedText == null ? "" : recognizedText;
         if (input.contains("off led")) {
             answer = "led off now !";
-            editinput.setText(input);
+            textView.setText(input);
             try {
                 mqttCommand.sendmessage("LED_1_OFF","smarthome/led/control");
             } catch (MqttException e) {
                 e.printStackTrace();
             }
-            editinput.setText(input);
+            textView.setText(input);
         } else if (input.contains("time")) {
             DateFormat dateFormat = new SimpleDateFormat("HH mm", Locale.US);
             answer = "It is " + dateFormat.format(new Date());
         } else if (input.matches(".* stop music")) {
             answer = "Done.";
-            editinput.setText(input);
+            textView.setText(input);
         } else if (input.contains("fan")) {
             answer = "open fan right?";
-            editinput.setText(input);
+            textView.setText(input);
         } else if (input.contains("on led")) {
             answer = "Led on now";
-            editinput.setText(input);
+            textView.setText(input);
             try {
                 mqttCommand.sendmessage("LED_1_ON","smarthome/led/control");
             } catch (MqttException e) {
                 e.printStackTrace();
             }
-            editinput.setText(input);
-        }else if (input.matches("play music*")) {
+            textView.setText(input);
+        }
+        else if (input.matches("play music*")) {
             answer = "Music on !";
-            editinput.setText(input);
+            textView.setText(input);
             try {
                 mqttCommand.sendmessage("PLAY_MUSIC","smarthome/music");
             } catch (MqttException e) {
@@ -196,7 +181,7 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
             }
         } else{
             answer = "Sorry, I didn't understand your poor English.";
-            editinput.setText(input);
+            textView.setText(input);
         }
         tts.say(answer);
     }
@@ -204,7 +189,6 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
     @Override
     public void onTimeout() {
         state = Stata.TIMEOUT;
-        editstatus.setText("Timeout");
         tts.say("Timeout! You're too slow");
     }
 
@@ -222,16 +206,16 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
                     e.printStackTrace();
                 }
             case "1_ON":
-                imgled1.setImageDrawable(getDrawable(R.drawable.iconled2));
+                imgled1.setImageDrawable(getDrawable(R.drawable.ico_light_on));
                 break;
             case "1_OFF":
-                imgled1.setImageDrawable(getDrawable(R.drawable.iconled1));
+                imgled1.setImageDrawable(getDrawable(R.drawable.ico_light_off));
                 break;
             case "2_ON":
-                imgled2.setImageResource(R.drawable.iconled2);
+                imgled2.setImageResource(R.drawable.ico_light_on);
                 break;
             case "2_OFF":
-                imgled2.setImageResource(R.drawable.iconled1);
+                imgled2.setImageResource(R.drawable.ico_light_off);
                 break;
         }
     }

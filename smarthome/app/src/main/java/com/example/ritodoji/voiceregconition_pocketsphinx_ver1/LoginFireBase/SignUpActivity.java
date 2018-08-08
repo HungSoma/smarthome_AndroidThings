@@ -1,7 +1,7 @@
 package com.example.ritodoji.voiceregconition_pocketsphinx_ver1.LoginFireBase;
 
+
 import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,9 +13,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.ritodoji.voiceregconition_pocketsphinx_ver1.MainActivity;
+
 import com.example.ritodoji.voiceregconition_pocketsphinx_ver1.R;
-import com.google.android.gms.common.oob.SignUp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -39,6 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         initView();
         signup();
+        signinButton();
     }
 
     private void initView(){
@@ -107,50 +107,26 @@ public class SignUpActivity extends AppCompatActivity {
 
                                     stores.child(userId).push().setValue(store);
                                     Log.d("database","DATABASE DONE !! ");
-                                    //startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                                     finish();
                                 }
                             }
                         });
 
-               /* user = FirebaseAuth.getInstance().getCurrentUser();
-                Store store = new Store(uri,userMqtt,passMqtt,port,clientid);
-                if (user == null) {
-                    // No session user
-                    return;
-                }
-                String userId = user.getUid();
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-                DatabaseReference stores = database.getReference("DataStore");
-
-                stores.child(userId).push().setValue(store);*/
             }
         });
     }
 
 
-    public class Store {
-
-        public String usernameMqtt;
-        public String passwordMqtt;
-        public String uri;
-        public String clientId;
-        public String port;
-
-        public Store() {
-        }
-
-        public Store(String uri, String usernameMqtt, String passwordMqtt, String port, String clientId) {
-            this.usernameMqtt = usernameMqtt;
-            this.passwordMqtt = passwordMqtt;
-            this.uri = uri;
-            this.port = port;
-            this.clientId = clientId;
-
-        }
+    private void signinButton(){
+        buttonSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
-
     @Override
     protected void onResume() {
         super.onResume();

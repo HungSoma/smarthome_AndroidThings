@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundTemp"
+    android:background="@color/backgroundPrimary"
     tools:context=".TempActivity">
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/linechart"
@@ -12,25 +12,70 @@
         android:layout_height="350dp"
         android:layout_alignParentTop="true"/>
 
-    <TextView
-        android:id="@+id/textTemp"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="103dp"
-        android:layout_marginStart="67dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        android:textColor="@color/colortexttemp"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="532dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linechart">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+            <RelativeLayout
+                android:id="@+id/layoutTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="30sp"
-        android:layout_alignBaseline="@+id/textTemp"
-        android:layout_toEndOf="@+id/textTemp"
-        android:text=" độ C" />
+
+                <TextView
+                    android:id="@+id/textTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Null"
+                    android:textSize="20sp"
+                    android:textColor="@color/colortexttemp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignBaseline="@+id/textTemp"
+                    android:layout_toEndOf="@+id/textTemp"
+                    android:text="\u2103"
+                    android:textColor="@color/colortexttemp"
+                    android:textSize="20sp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/layoutTemp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="80dp"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/livingroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Living Room"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/textDaytime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/livingroom"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>
