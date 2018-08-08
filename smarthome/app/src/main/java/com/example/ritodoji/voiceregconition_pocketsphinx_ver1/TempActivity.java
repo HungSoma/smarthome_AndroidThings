@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -39,9 +40,7 @@ public class TempActivity extends Activity implements MqttCommand.MqttControl {
         setContentView(R.layout.activity_temp);
         init();
         try {
-            mqttCommand = new MqttCommand(this, this);
-            mqttCommand.client.subscribe(topicTemp);
-           // mqttCommand.client.unsubscribe("smarthome/led/state");
+            mqttCommand = new MqttCommand(this, this,topicTemp);
             Log.d("SUB","SubCribed Temp");
         } catch (MqttException e) {
             e.printStackTrace();
@@ -135,7 +134,7 @@ public class TempActivity extends Activity implements MqttCommand.MqttControl {
 
         return set;
     }
-    private void addEntry(float a) {
+    private void addEntry(int a) {
         LineData data = mChart.getData();
 
         if (data != null) {
@@ -162,10 +161,16 @@ public class TempActivity extends Activity implements MqttCommand.MqttControl {
     @Override
     public void getMessage(String payload) {
         Log.d("mess","You got a value : " + payload);
-        setText(textView,payload);
-        setText(textTime,timeDay);
-        float pay = Float.valueOf(payload);
-        addEntry(pay);
+        Log.d("temp","temp : " + payload.trim().substring(23)+ "time: " + payload.trim().substring(11,22));
+
+        if(payload.trim().substring(0,10).equals("LivingRoom")) {
+            setText(textView,payload.trim().substring(23));
+            setText(textTime,payload.trim().substring(11,22));
+            int pay = Integer.valueOf(payload.trim().substring(23));
+            addEntry(pay);
+        }else {
+            Log.d("aa", " failed");
+        }
     }
 
     private void setText(final TextView text,final String value){
@@ -182,7 +187,8 @@ public class TempActivity extends Activity implements MqttCommand.MqttControl {
         super.onDestroy();
         try {
             mqttCommand.close();
-            mqttCommand.client.unsubscribe(topicTemp);
+            Log.d("unsub","unsub Temp");
+            Toast.makeText(TempActivity.this,"client closed",Toast.LENGTH_SHORT).show();
         } catch (MqttException e) {
             e.printStackTrace();
         }

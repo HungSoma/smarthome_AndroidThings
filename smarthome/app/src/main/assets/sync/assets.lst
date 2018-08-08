@@ -1,10 +1,10 @@
 8234.dic
 8234.lm
 8234.lm.bin
+9602.dic
+9602.lm
+9602.lm.bin
 cmudict-en-us.dict
-control.dic
-control.lm.bin
-control_ver2.lm
 en-us-ptm/README
 en-us-ptm/feat.params
 en-us-ptm/mdef
@@ -15,7 +15,4 @@ en-us-ptm/sendump
 en-us-ptm/transition_matrices
 en-us-ptm/variances
 mymenu.gram
-predefined.lm.bin
-smarthome.dic
-smarthome.lm.bin
 tiengviet.dic

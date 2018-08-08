@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import com.example.ritodoji.voiceregconition_pocketsphinx_ver1.LoginFireBase.Store;
 
+import org.eclipse.paho.android.service.MqttAndroidClient;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
@@ -23,10 +26,11 @@ public class MqttCommand implements MqttCallback {
     private static String username = "omnsnfxm";
     private static String password = "2g50mT2Xl3Cx";
     private static String serveruri = "tcp://m14.cloudmqtt.com:13457";
-    private static String clientId = "voiceapp";
+    private static String clientId = "voicedefault";
     private static final String TAG = MqttCommand.class.getSimpleName();
     private static final  int QOs = 1;
     public MqttClient client ;
+    private String topic;
     private MqttControl mqttControl;
     public interface MqttControl{
         void getMessage(String payload);
@@ -41,16 +45,18 @@ public class MqttCommand implements MqttCallback {
         Log.d("DATA","password: " + password);
         Log.d("DATA","clientID: " + clientId);
     }
-    public  MqttCommand(Context context, MqttControl mqttControl) throws MqttException {
+    public  MqttCommand(Context context, MqttControl mqttControl, String topic) throws MqttException {
         getdataFromDB();
+        this.topic = topic;
         this.mqttControl = mqttControl;
-        subcribeToTopic(context);
+        subcribeToTopic(context,topic);
     }
-    public void subcribeToTopic(Context context) throws MqttException {
+    public void subcribeToTopic(Context context, String topic) throws MqttException {
         client = new MqttClient(serveruri,clientId,new MemoryPersistence());
         client.connect(connectOptionchoice());
         client.setCallback(this);
-        Log.d(TAG,"nice connected ~");
+        client.subscribe(topic);
+        Log.d(TAG,"nice connected ~ + subbed: " + topic);
         Toast.makeText(context,"MQTT onSuccess !", Toast.LENGTH_LONG).show();
     }
 
@@ -58,13 +64,15 @@ public class MqttCommand implements MqttCallback {
         MqttConnectOptions connectOptions = new MqttConnectOptions();
         connectOptions.setUserName(username);
         connectOptions.setPassword(password.toCharArray());
-        connectOptions.setCleanSession(false);
+        connectOptions.setCleanSession(true);
         connectOptions.setAutomaticReconnect(true);
         connectOptions.setKeepAliveInterval(30);
         return connectOptions;
     }
 
     public void close() throws MqttException {
+        client.unsubscribe(topic);
+        Log.d(TAG,"unsub : " + topic);
         client.disconnect();
         client.close();
         Log.d(TAG,"client  disconnected ! ");
@@ -100,5 +108,6 @@ public class MqttCommand implements MqttCallback {
     public void deliveryComplete(IMqttDeliveryToken token) {
 
     }
+
 
 }

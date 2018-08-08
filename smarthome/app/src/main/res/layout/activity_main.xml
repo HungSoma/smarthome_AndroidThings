@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:layout_marginTop="70dp"
-        android:hint="Your voice"
+        android:hint="@string/your_voice"
         android:textColorHint="@color/white"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
     <RelativeLayout
@@ -40,18 +40,28 @@
                 android:src="@drawable/ico_light_off"
                 tools:layout_editor_absoluteX="189dp"
                 tools:layout_editor_absoluteY="132dp" />
+            <TextView
+                android:id="@+id/livingroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/living_room"
+                android:layout_toEndOf="@+id/imageLed1"
+                android:layout_alignBaseline="@+id/switch1"
+
+                />
             <Switch
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/imageLed1"
+                android:layout_alignStart="@+id/livingroom"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
                 android:layout_marginTop="40dp"
-                android:text="on/off"
+                android:text="@string/on_off"
                 android:textColor="@color/white"
-                android:textOn="ON"
-                android:textOff="OFF"/>
+
+               />
             <ImageView
                 android:id="@+id/imageLed2"
                 android:layout_width="65dp"
@@ -61,6 +71,14 @@
                 android:src="@drawable/ico_light_off"
                 tools:layout_editor_absoluteX="189dp"
                 tools:layout_editor_absoluteY="132dp" />
+            <TextView
+                android:id="@+id/bedroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/bed_room"
+                android:layout_toEndOf="@+id/imageLed2"
+                android:layout_alignBaseline="@+id/switch2"/>
             <Switch
                 android:id="@+id/switch2"
                 android:layout_width="wrap_content"
@@ -68,7 +86,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/switch1"
                 android:layout_marginTop="130dp"
-                android:text="on/off"
+                android:text="@string/on_off"
                 android:textColor="@color/white"/>
             <ImageView
                 android:id="@+id/imageLed3"
@@ -80,7 +98,14 @@
                 tools:layout_editor_absoluteX="189dp"
                 tools:layout_editor_absoluteY="132dp" />
 
-
+            <TextView
+                android:id="@+id/kitchen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/kitchen"
+                android:layout_toEndOf="@+id/imageLed3"
+                android:layout_alignBaseline="@+id/switch3"/>
             <Switch
                 android:id="@+id/switch3"
                 android:layout_width="wrap_content"
@@ -89,7 +114,7 @@
                 android:layout_alignStart="@+id/switch1"
                 android:layout_marginTop="223dp"
                 android:textColor="@color/white"
-                android:text="on/off"/>
+                android:text="@string/on_off"/>
         </RelativeLayout>
 
     </RelativeLayout>

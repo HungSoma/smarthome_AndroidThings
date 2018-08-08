@@ -140,13 +140,13 @@ public class PocketSphinx implements RecognitionListener {
         recognizer.startListening(SEARCH_LM,10000);
     }
     private void setupRegconizer(File assetDir) throws IOException {
-        recognizer = defaultSetup().setAcousticModel(new File(assetDir,"en-us-ptm")).setDictionary(new File(assetDir,"8234.dic" ))
+        recognizer = defaultSetup().setAcousticModel(new File(assetDir,"en-us-ptm")).setDictionary(new File(assetDir,"9602.dic" ))
                 .setKeywordThreshold(1e-35f).getRecognizer();
         recognizer.addListener(this);
 
         recognizer.addKeyphraseSearch(SEARCH_KEY, KEYPHRASE);
 
-        File controlngram = new File(assetDir,"8234.lm.bin");
+        File controlngram = new File(assetDir,"9602.lm");
         recognizer.addNgramSearch(SEARCH_LM,controlngram);
 
 

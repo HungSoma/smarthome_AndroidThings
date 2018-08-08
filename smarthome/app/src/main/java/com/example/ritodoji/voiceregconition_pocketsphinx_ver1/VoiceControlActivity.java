@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.ritodoji.voiceregconition_pocketsphinx_ver1.LoginFireBase.LoginActivity;
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class VoiceControlActivity extends Activity  {
     private Button buttonLed, buttonTemp;
     private TextView textView;
+    private ProgressBar progressBar;
     public Store data;
     Context wrapper;
     private static final String TAG = VoiceControlActivity.class.getSimpleName();
@@ -37,10 +39,11 @@ public class VoiceControlActivity extends Activity  {
         buttonLed = findViewById(R.id.buttonled);
         buttonTemp = findViewById(R.id.buttonTemp);
         textView = findViewById(R.id.textwelcome);
+        progressBar = findViewById(R.id.progressBarVoice);
         wrapper = new ContextThemeWrapper(this, R.style.YOURSTYLE);
+        EventListen();
         setButtonLed();
         setButtonTemp();
-        EventListen();
         butMenu();
     }
     private void setButtonLed(){
@@ -48,7 +51,9 @@ public class VoiceControlActivity extends Activity  {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(VoiceControlActivity.this,MainActivity.class);
+                progressBar.setVisibility(View.VISIBLE);
                 startActivity(intent);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -56,8 +61,11 @@ public class VoiceControlActivity extends Activity  {
         buttonTemp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(VoiceControlActivity.this,TempActivity.class);
+                progressBar.setVisibility(View.VISIBLE);
                 startActivity(intent);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -114,6 +122,7 @@ public class VoiceControlActivity extends Activity  {
                                 FirebaseAuth.getInstance().signOut();
                                 Intent intent = new Intent(VoiceControlActivity.this, LoginActivity.class);
                                 startActivity(intent);
+                                finish();
                                 break;
                             case R.id.menuDetail:
                                 break;

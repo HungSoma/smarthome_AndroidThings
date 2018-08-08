@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
 
@@ -36,24 +38,25 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
     private MqttCommand mqttCommand;
     private Stata state;
     private TextView textView;
-    ImageView imgled1,imgled2;
-    Switch switchLight1;
+    ImageView imgled1,imgled2, imgled3;
+    Switch switchLight1, switchLight2, switchLight3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         intit_view();
+        ontouchMic();
         tts = new TtsSpeaker(MainActivity.this, MainActivity.this);
         try {
-            mqttCommand = new MqttCommand(this, this);
-            mqttCommand.client.subscribe(toPic);
-           // mqttCommand.client.unsubscribe("smarthome/temp/value");
+            mqttCommand = new MqttCommand(this, this, toPic);
             Log.d("SUB","Subcribed Led");
         } catch (MqttException e) {
             e.printStackTrace();
         }
-        ontouchMic();
+        onSwitch();
+
     }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
@@ -63,7 +66,68 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
         textView = findViewById(R.id.textVoice);
         imgled1 = findViewById(R.id.imageLed1);
         imgled2 = findViewById(R.id.imageLed2);
+        imgled3 = findViewById(R.id.imageLed3);
         switchLight1 = findViewById(R.id.switch1);
+        switchLight2 = findViewById(R.id.switch2);
+        switchLight3 = findViewById(R.id.switch3);
+    }
+
+    private void onSwitch(){
+        switchLight1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if (switchLight1.isChecked()){
+                   try {
+                       mqttCommand.sendmessage("LED_1_ON","smarthome/led/control");
+                   } catch (MqttException e) {
+                       e.printStackTrace();
+                   }
+                }else {
+                   try {
+                       mqttCommand.sendmessage("LED_1_OFF","smarthome/led/control");
+                   } catch (MqttException e) {
+                       e.printStackTrace();
+                   }
+               }
+            }
+        });
+
+        switchLight2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (switchLight2.isChecked()){
+                    try {
+                        mqttCommand.sendmessage("LED_2_ON","smarthome/led/control");
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    try {
+                        mqttCommand.sendmessage("LED_2_OFF","smarthome/led/control");
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        switchLight3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (switchLight3.isChecked()){
+                    try {
+                        mqttCommand.sendmessage("LED_3_ON","smarthome/led/control");
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    try {
+                        mqttCommand.sendmessage("LED_3_OFF","smarthome/led/control");
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
     private void ontouchMic(){
         findViewById(R.id.buttonMic).setOnTouchListener(new View.OnTouchListener() {
@@ -73,6 +137,7 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
                     case MotionEvent.ACTION_UP:
                         pocketsphinx.recognizer.stop();
                         state = Stata.STOP_RECOGINITION;
+                        textView.setText("Press mic");
                         tts.say("I'm off!");
                         break;
                     case MotionEvent.ACTION_DOWN:
@@ -93,7 +158,7 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
         pocketsphinx.onStop();
         try {
             mqttCommand.close();
-            mqttCommand.client.unsubscribe(toPic);
+            Toast.makeText(MainActivity.this,"client closed",Toast.LENGTH_SHORT).show();
         } catch (MqttException e) {
             e.printStackTrace();
         }
@@ -143,8 +208,8 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
         state = Stata.CONFIRMING_ACTION;
         String answer;
         String input = recognizedText == null ? "" : recognizedText;
-        if (input.contains("off led")) {
-            answer = "led off now !";
+        if (input.contains("living room light off")) {
+            answer = "living room light off now !";
             textView.setText(input);
             try {
                 mqttCommand.sendmessage("LED_1_OFF","smarthome/led/control");
@@ -161,11 +226,51 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
         } else if (input.contains("fan")) {
             answer = "open fan right?";
             textView.setText(input);
-        } else if (input.contains("on led")) {
-            answer = "Led on now";
+        } else if (input.contains("living room light on")) {
+            answer = "living room light on now";
             textView.setText(input);
             try {
                 mqttCommand.sendmessage("LED_1_ON","smarthome/led/control");
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+            textView.setText(input);
+        }
+        else if (input.contains("bed room light on")) {
+            answer = "bed room light on now";
+            textView.setText(input);
+            try {
+                mqttCommand.sendmessage("LED_2_ON","smarthome/led/control");
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+            textView.setText(input);
+        }
+        else if (input.contains("bed room light off")) {
+            answer = "bed room light off now";
+            textView.setText(input);
+            try {
+                mqttCommand.sendmessage("LED_2_OFF","smarthome/led/control");
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+            textView.setText(input);
+        }
+        else if (input.contains("kitchen light on")) {
+            answer = "kitchen light on now";
+            textView.setText(input);
+            try {
+                mqttCommand.sendmessage("LED_3_ON","smarthome/led/control");
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+            textView.setText(input);
+        }
+        else if (input.contains("kitchen light off") || (input.contains("kitchen") && input.contains("off"))) {
+            answer = "kitchen light off now";
+            textView.setText(input);
+            try {
+                mqttCommand.sendmessage("LED_3_OFF","smarthome/led/control");
             } catch (MqttException e) {
                 e.printStackTrace();
             }
@@ -197,14 +302,14 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
     @Override
     public void getMessage(String payload) {
         Log.d("MQTT","You got a message : " + payload);
-        textView.setText(payload);
+        //textView.setText(payload);
         switch (payload){
-            case "test":
+           /* case "test":
                 try {
                     mqttCommand.sendmessage("check_done","smarthome/");
                 } catch (MqttException e) {
                     e.printStackTrace();
-                }
+                }*/
             case "1_ON":
                 imgled1.setImageDrawable(getDrawable(R.drawable.ico_light_on));
                 break;
@@ -212,10 +317,16 @@ public class MainActivity extends Activity implements PocketSphinx.Listener, Tts
                 imgled1.setImageDrawable(getDrawable(R.drawable.ico_light_off));
                 break;
             case "2_ON":
-                imgled2.setImageResource(R.drawable.ico_light_on);
+                imgled2.setImageDrawable(getDrawable(R.drawable.ico_light_on) );
                 break;
             case "2_OFF":
-                imgled2.setImageResource(R.drawable.ico_light_off);
+                imgled2.setImageDrawable(getDrawable(R.drawable.ico_light_off) );
+                break;
+            case  "3_OFF":
+                imgled3.setImageDrawable(getDrawable(R.drawable.ico_light_off) );
+                break;
+            case "3_ON":
+                imgled3.setImageDrawable(getDrawable(R.drawable.ico_light_on) );
                 break;
         }
     }

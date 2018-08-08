@@ -36,6 +36,7 @@
         android:layout_marginTop="50dp"
         />
     <TextView
+        android:id="@+id/shome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shome"
@@ -44,6 +45,16 @@
         android:layout_alignLeft="@+id/logoMenu"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="80dp"/>
+        <ProgressBar
+            android:id="@+id/progressBarVoice"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/shome"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/progress"
+            android:visibility="gone" />
         <RelativeLayout
             android:layout_below="@+id/logoMenu"
             android:layout_width="wrap_content"

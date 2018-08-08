@@ -1,0 +1,77 @@
+Language model created by QuickLM on Wed Aug  8 12:19:48 EDT 2018
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 8 sentences and 16 words
+
+\data\
+ngram 1=16
+ngram 2=20
+ngram 3=18
+
+\1-grams:
+-1.0512 </s> -0.3010
+-1.0512 <s> -0.2606
+-1.6532 bed -0.2813
+-1.9542 is -0.2962
+-1.9542 it -0.2962
+-1.6532 kitchen -0.2711
+-1.1761 light -0.2711
+-1.6532 living -0.2813
+-1.9542 music -0.2606
+-1.9542 now -0.2606
+-1.4771 off -0.2606
+-1.4771 on -0.2606
+-1.9542 play -0.2962
+-1.3522 room -0.2711
+-1.9542 time -0.2962
+-1.9542 what -0.2962
+
+\2-grams:
+-0.9031 <s> bed 0.0000
+-0.9031 <s> kitchen 0.0000
+-0.9031 <s> living 0.0000
+-1.2041 <s> play 0.0000
+-1.2041 <s> what 0.0000
+-0.3010 bed room 0.0000
+-0.3010 is it 0.0000
+-0.3010 it now 0.0000
+-0.3010 kitchen light 0.0000
+-0.6021 light off 0.0000
+-0.6021 light on 0.0000
+-0.3010 living room 0.0000
+-0.3010 music </s> -0.3010
+-0.3010 now </s> -0.3010
+-0.3010 off </s> -0.3010
+-0.3010 on </s> -0.3010
+-0.3010 play music 0.0000
+-0.3010 room light 0.0000
+-0.3010 time is 0.0000
+-0.3010 what time 0.0000
+
+\3-grams:
+-0.3010 <s> bed room
+-0.3010 <s> kitchen light
+-0.3010 <s> living room
+-0.3010 <s> play music
+-0.3010 <s> what time
+-0.3010 bed room light
+-0.3010 is it now
+-0.3010 it now </s>
+-0.6021 kitchen light off
+-0.6021 kitchen light on
+-0.3010 light off </s>
+-0.3010 light on </s>
+-0.3010 living room light
+-0.3010 play music </s>
+-0.6021 room light off
+-0.6021 room light on
+-0.3010 time is it
+-0.3010 what time is
+
+\end\
